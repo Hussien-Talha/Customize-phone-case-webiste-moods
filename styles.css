@@ -13,6 +13,13 @@ header {
     text-align: center;
 }
 
+section {
+    background-color: #0066ff;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
 main {
     padding: 1rem;
     text-align: center;
