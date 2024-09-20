@@ -1,21 +1,33 @@
-from flask import Flask, send_file, request
-from io import BytesIO
-from PIL import Image
-import base64
+# app.py
+from flask import Flask, render_template, request, redirect, url_for
+import pandas as pd
 
 app = Flask(__name__)
 
-@app.route('/download', methods=['POST'])
-def download():
-    data = request.form['imageData']
-    img_data = base64.b64decode(data.split(',')[1])
-    img = Image.open(BytesIO(img_data))
+# Load phone models from Excel sheet
+phone_models_df = pd.read_excel('phone_models.xlsx')
 
-    img_io = BytesIO()
-    img.save(img_io, 'PNG')
-    img_io.seek(0)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-    return send_file(img_io, mimetype='image/png', as_attachment=True, download_name='custom-phone-case.png')
+@app.route('/customize', methods=['GET', 'POST'])
+def customize():
+    phone_models = phone_models_df.to_dict(orient='records')
+    return render_template('customize.html', phone_models=phone_models)
+
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    if request.method == 'POST':
+        phone_number = request.form['phone-number']
+        address = request.form['address']
+        # Process the order here (e.g., save to database, send notification)
+        return redirect(url_for('thank_you'))
+    return render_template('checkout.html')
+
+@app.route('/thank-you')
+def thank_you():
+    return "<h1>Thank you for your order!</h1>"
 
 if __name__ == '__main__':
     app.run(debug=True)

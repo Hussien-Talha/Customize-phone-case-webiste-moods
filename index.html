@@ -1,22 +1,17 @@
+<!-- /templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Phone Case Designer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Custom Phone Cases</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Design Your Custom Phone Case</h1>
-        <div id="phone-case">
-            <img id="case-image" src="phone-case-template.png" alt="Phone Case">
-            <canvas id="canvas" width="300" height="600"></canvas>
-        </div>
-        <input type="file" id="upload-image" accept="image/*">
-        <button id="download-btn">Download Case Design</button>
-        <a id="whatsapp-link" href="#">Send via WhatsApp</a>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Welcome to Custom Phone Cases</h1>
+        <p>Design your own custom phone case for over 150+ models!</p>
+        <a href="/Customize.html" class="btn">Get Started</a>
+    </header>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!-- /templates/customize.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Customize Your Case</title>
+</head>
+<body>
+    <header>
+        <h1>Customize Your Phone Case</h1>
+    </header>
+
+    <main>
+        <form id="model-select-form">
+            <label for="phone-model">Choose your phone model:</label>
+            <select id="phone-model">
+                <!-- Phone models will be dynamically populated from the backend -->
+                {% for model in phone_models %}
+                <option value="{{ model.id }}">{{ model.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <div id="phone-case-customization">
+            <div id="phone-case-preview">
+                <img id="phone-case-image" src="" alt="Phone Case" />
+                <input type="file" id="image-upload" />
+            </div>
+            <button id="next-button" class="btn">Next</button>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
