@@ -13,20 +13,11 @@
     </header>
 
     <main>
-        <form id="model-select-form">
-            <label for="phone-model">Choose your phone model:</label>
-            <select id="phone-model">
-                <!-- Phone models will be dynamically populated from the backend -->
-                {% for model in phone_models %}
-                <option value="{{ model.id }}">{{ model.name }}</option>
-                {% endfor %}
-            </select>
-        </form>
 
         <div id="phone-case-customization">
             <div id="phone-case-preview">
-                <img id="phone-case-image" src="" alt="Phone Case" />
-                <input type="file" id="image-upload" />
+                <img  src="" alt="Phone Case"/>
+                <input type="file" id="image-upload"/>
             </div>
             <button id="next-button" class="btn">Next</button>
         </div>
